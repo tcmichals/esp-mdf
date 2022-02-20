@@ -81,6 +81,8 @@ static void restart_count_erase_timercb(void *timer)
 
 static bool restart_trigger()
 {
+/*TCM:FIX */
+#ifdef TCM_FIX    
     mdf_err_t ret          = MDF_OK;
     TimerHandle_t timer    = NULL;
     uint32_t restart_count = 0;
@@ -115,6 +117,9 @@ static bool restart_trigger()
     }
 
     return ret;
+#else
+    return false;
+#endif    
 }
 
 static void mupgrade_version_fallback_task(void *arg)

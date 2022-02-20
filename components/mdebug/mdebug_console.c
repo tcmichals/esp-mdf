@@ -174,6 +174,8 @@ static void console_handle_task(void *arg)
 
 mdf_err_t mdebug_console_init()
 {
+/*TCM:FIX*/
+#ifdef TCM_FIX    
     /** Wait until uart tx full empty and the last char send ok. */
     fflush(stdout);
     uart_tx_wait_idle(CONSOLE_UART_NUM);
@@ -214,7 +216,7 @@ mdf_err_t mdebug_console_init()
 #if !CONFIG_ESP_CONSOLE_UART_NONE
     xTaskCreate(console_handle_task, "console_handle", 1024 * 4, NULL, 1, NULL);
 #endif /*!< CONFIG_CONSOLE_UART_NONE */
-
+#endif
     return MDF_OK;
 }
 

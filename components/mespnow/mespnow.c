@@ -32,11 +32,11 @@
 #define LOG_LOCAL_LEVEL CONFIG_MESPNOW_LOG_LEVEL
 #define LOG_FORMAT(letter, format)  LOG_COLOR_ ## letter #letter " (%d) [mespnow, %d]: " format LOG_RESET_COLOR "\n"
 
-#define MDF_LOGE( format, ... ) if(LOG_LOCAL_LEVEL >= ESP_LOG_ERROR) { ets_printf(LOG_FORMAT(E, format), xTaskGetTickCount(), __LINE__, ##__VA_ARGS__); }
-#define MDF_LOGW( format, ... ) if(LOG_LOCAL_LEVEL >= ESP_LOG_WARN) { ets_printf(LOG_FORMAT(W, format), xTaskGetTickCount(), __LINE__, ##__VA_ARGS__); }
-#define MDF_LOGI( format, ... ) if(LOG_LOCAL_LEVEL >= ESP_LOG_INFO) { ets_printf(LOG_FORMAT(I, format), xTaskGetTickCount(), __LINE__, ##__VA_ARGS__); }
-#define MDF_LOGD( format, ... ) if(LOG_LOCAL_LEVEL >= ESP_LOG_DEBUG) { ets_printf(LOG_FORMAT(D, format), xTaskGetTickCount(), __LINE__, ##__VA_ARGS__); }
-#define MDF_LOGV( format, ... ) if(LOG_LOCAL_LEVEL >= ESP_LOG_VERBOSE) { ets_printf(LOG_FORMAT(V, format), xTaskGetTickCount(), __LINE__, ##__VA_ARGS__); }
+#define MDF_LOGE( format, ... ) if(LOG_LOCAL_LEVEL >= ESP_LOG_ERROR) { /*TXM:FIX ets_printf(LOG_FORMAT(E, format), xTaskGetTickCount(), __LINE__, ##__VA_ARGS__); */}
+#define MDF_LOGW( format, ... ) if(LOG_LOCAL_LEVEL >= ESP_LOG_WARN) { /*TCM:FIX ets_printf(LOG_FORMAT(W, format), xTaskGetTickCount(), __LINE__, ##__VA_ARGS__); */}
+#define MDF_LOGI( format, ... ) if(LOG_LOCAL_LEVEL >= ESP_LOG_INFO) { /*TCM:FIX ets_printf(LOG_FORMAT(I, format), xTaskGetTickCount(), __LINE__, ##__VA_ARGS__); */}
+#define MDF_LOGD( format, ... ) if(LOG_LOCAL_LEVEL >= ESP_LOG_DEBUG) { /*TCM:FIX ets_printf(LOG_FORMAT(D, format), xTaskGetTickCount(), __LINE__, ##__VA_ARGS__); */}
+#define MDF_LOGV( format, ... ) if(LOG_LOCAL_LEVEL >= ESP_LOG_VERBOSE) { /*TCM:FIX ets_printf(LOG_FORMAT(V, format), xTaskGetTickCount(), __LINE__, ##__VA_ARGS__); */}
 
 #define SEND_CB_OK               BIT0
 #define SEND_CB_FAIL             BIT1
